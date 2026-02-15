@@ -84,13 +84,21 @@ export default {
     // 页面加载时验证token
     const isAuthenticated = await this.authStore.verifyToken();
     
-    // 如果用户已认证，尝试加载游戏状态
+    // 如果用户已认证，异步加载游戏状态，不阻塞页面渲染
     if (isAuthenticated) {
       const characterId = localStorage.getItem('characterId');
       if (characterId) {
-        await this.gameStore.loadGameState(characterId);
-        // 启动自动保存功能
-        this.gameStore.startAutoSave(5); // 每5分钟自动保存一次
+        // 使用setTimeout将加载操作放到下一个事件循环，避免阻塞渲染
+        setTimeout(async () => {
+          try {
+            await this.gameStore.loadGameState(characterId);
+            // 启动自动保存功能
+            this.gameStore.startAutoSave(5); // 每5分钟自动保存一次
+          } catch (error) {
+            console.error('加载游戏状态失败:', error);
+            // 即使加载失败也不影响页面显示
+          }
+        }, 0);
       }
       // 如果没有角色ID，用户会被路由守卫重定向到角色创建页面
     }

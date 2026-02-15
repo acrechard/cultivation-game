@@ -29,9 +29,14 @@ const corsOptions = {
   credentials: true
 };
 
-// 在生产环境中允许所有来源，开发环境中限制为本地
+// 在生产环境中允许来自Vercel的请求，开发环境中限制为本地
 if (process.env.NODE_ENV === 'production') {
-  corsOptions.origin = '*';  // 生产环境中允许所有来源
+  // 生产环境中允许来自Vercel前端的请求
+   const allowedOrigins = process.env.ALLOWED_ORIGINS ? 
+     process.env.ALLOWED_ORIGINS.split(',') : 
+     ['https://cultivation-game-g5h2.vercel.app']; // 默认Vercel URL
+  
+  corsOptions.origin = allowedOrigins;
 } else {
   corsOptions.origin = [
     'http://localhost:3000',

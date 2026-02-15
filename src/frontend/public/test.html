@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文字修仙传 - 测试页面</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #409EFF;
+    }
+    .status {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f0f9ff;
+      border-left: 4px solid #409EFF;
+      border-radius: 4px;
+    }
+    .button {
+      background-color: #409EFF;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>文字修仙传 - 测试页面</h1>
+    <div class="status">
+      <p>服务器状态: <strong>运行正常</strong></p>
+      <p>如果能看到此页面，说明服务器工作正常</p>
+    </div>
+    <p>点击下方按钮访问不同页面:</p>
+    <button class="button" onclick="location.href='/src/main.js'">访问 JS 文件</button>
+    <button class="button" onclick="location.href='/src/App.vue'">访问 App.vue</button>
+    <button class="button" onclick="location.href='/'">刷新首页</button>
+  </div>
+</body>
+</html>

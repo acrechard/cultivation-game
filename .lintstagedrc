@@ -1,0 +1,8 @@
+# husky
+[husky]
+hook-dir = .husky
+
+# lint-staged
+[lint-staged]
+"*.{js,jsx,vue,ts,tsx} = eslint --fix
+"*.{js,jsx,vue,ts,tsx,css,scss,md}" = prettier --write

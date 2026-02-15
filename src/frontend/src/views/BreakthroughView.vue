@@ -108,6 +108,8 @@
 <script>
 import { ElMessage } from 'element-plus';
 import { useGameStore } from '@/stores/game';
+import { useAuthStore } from '@/stores/auth';
+import { API_BASE_URL } from '@/config/api';
 
 export default {
   name: 'BreakthroughView',
@@ -140,7 +142,7 @@ export default {
   methods: {
     async loadBreakthroughConditions() {
       try {
-        const response = await fetch(`/api/breakthrough/conditions/${this.cultivation.realm}/${this.cultivation.realmLevel}`, {
+        const response = await fetch(`${API_BASE_URL}/api/breakthrough/conditions/${this.cultivation.realm}/${this.cultivation.realmLevel}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -179,7 +181,7 @@ export default {
     
     async loadBreakthroughHistory() {
       try {
-        const response = await fetch('/api/breakthrough/history', {
+        const response = await fetch(`${API_BASE_URL}/api/breakthrough/history`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -207,7 +209,7 @@ export default {
       this.isAttempting = true;
       
       try {
-        const response = await fetch('/api/breakthrough/attempt', {
+        const response = await fetch(`${API_BASE_URL}/api/breakthrough/attempt`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

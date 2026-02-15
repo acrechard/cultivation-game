@@ -82,6 +82,7 @@ import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 import { useGameStore } from '@/stores/game';
+import { API_BASE_URL } from '@/config/api';
 import { ElMessage, ElMessageBox } from 'element-plus';
 
 export default {
@@ -144,7 +145,7 @@ export default {
           
           try {
             // 创建角色的API调用
-            const response = await fetch('/api/characters', {
+            const response = await fetch(`${API_BASE_URL}/api/characters`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

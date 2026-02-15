@@ -110,7 +110,9 @@
 
 <script>
 import { ref, onMounted, computed } from 'vue';
+import { useAuthStore } from '@/stores/auth';
 import { useGameStore } from '@/stores/game';
+import { API_BASE_URL } from '@/config/api';
 import { ElMessage } from 'element-plus';
 
 export default {
@@ -141,7 +143,7 @@ export default {
           return;
         }
         
-        const response = await fetch(`/api/alchemy/recipes?characterId=${characterId}`, {
+        const response = await fetch(`${API_BASE_URL}/api/alchemy/recipes?characterId=${characterId}`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -170,7 +172,7 @@ export default {
           return;
         }
         
-        const response = await fetch(`/api/alchemy/materials?characterId=${characterId}`, {
+        const response = await fetch(`${API_BASE_URL}/api/alchemy/materials?characterId=${characterId}`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -199,7 +201,7 @@ export default {
           return;
         }
         
-        const response = await fetch(`/api/alchemy/potions?characterId=${characterId}`, {
+        const response = await fetch(`${API_BASE_URL}/api/alchemy/potions?characterId=${characterId}`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -242,7 +244,7 @@ export default {
         // 模拟炼制过程
         ElMessage.info('开始炼制...');
         
-        const response = await fetch('/api/alchemy/brew', {
+        const response = await fetch(`${API_BASE_URL}/api/alchemy/brew`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,

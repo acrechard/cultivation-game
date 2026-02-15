@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { API_BASE_URL } from '@/config/api';
 
 export const useGameStore = defineStore('game', {
   // 状态
@@ -405,7 +406,7 @@ export const useGameStore = defineStore('game', {
         }
 
         // 保存到服务器
-        const response = await fetch(`/api/user-state/save`, {
+        const response = await fetch(`${API_BASE_URL}/api/user-state/save`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${authStore.token}`,
@@ -459,7 +460,7 @@ export const useGameStore = defineStore('game', {
 
         // 尝试从服务器加载用户专属的游戏状态
         try {
-          const response = await fetch(`/api/user-state/load/${characterId}`, {
+          const response = await fetch(`${API_BASE_URL}/api/user-state/load/${characterId}`, {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${authStore.token}`,

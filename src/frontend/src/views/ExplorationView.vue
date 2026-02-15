@@ -153,8 +153,11 @@
 </template>
 
 <script>
-import { ElMessage } from 'element-plus';
+import { ref, onMounted, computed } from 'vue';
 import { useGameStore } from '@/stores/game';
+import { useAuthStore } from '@/stores/auth';
+import { API_BASE_URL } from '@/config/api';
+import { ElMessage } from 'element-plus';
 
 export default {
   name: 'ExplorationView',
@@ -207,7 +210,7 @@ export default {
           return;
         }
         
-        const response = await fetch('/api/exploration', {
+        const response = await fetch(`${API_BASE_URL}/api/exploration`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -250,7 +253,7 @@ export default {
       }
       
       try {
-        const response = await fetch('/api/exploration/location', {
+        const response = await fetch(`${API_BASE_URL}/api/exploration/location`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -311,7 +314,7 @@ export default {
       }
       
       try {
-        const response = await fetch('/api/exploration/explore', {
+        const response = await fetch(`${API_BASE_URL}/api/exploration/explore`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -420,7 +423,7 @@ export default {
       }
       
       try {
-        const response = await fetch('/api/exploration/treasure', {
+        const response = await fetch(`${API_BASE_URL}/api/exploration/treasure`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -469,7 +472,7 @@ export default {
       }
       
       try {
-        const response = await fetch('/api/exploration/hunt', {
+        const response = await fetch(`${API_BASE_URL}/api/exploration/hunt`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -518,7 +521,7 @@ export default {
       }
       
       try {
-        const response = await fetch('/api/exploration/collect', {
+        const response = await fetch(`${API_BASE_URL}/api/exploration/collect`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,

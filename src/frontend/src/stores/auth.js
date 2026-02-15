@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
+import { API_BASE_URL } from '@/config/api';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -20,7 +21,7 @@ export const useAuthStore = defineStore('auth', {
       this.error = null;
       
       try {
-        const response = await axios.post('/api/auth/register', userData);
+        const response = await axios.post(`${API_BASE_URL}/api/auth/register`, userData);
         const { token, user } = response.data;
         
         // 保存token到本地存储和状态
@@ -43,7 +44,7 @@ export const useAuthStore = defineStore('auth', {
       this.error = null;
       
       try {
-        const response = await axios.post('/api/auth/login', credentials);
+        const response = await axios.post(`${API_BASE_URL}/api/auth/login`, credentials);
         const { token, user } = response.data;
         
         // 保存token到本地存储和状态
@@ -81,7 +82,7 @@ export const useAuthStore = defineStore('auth', {
           headers: { Authorization: `Bearer ${this.token}` }
         };
         
-        const response = await axios.get('/api/auth/verify', config);
+        const response = await axios.get(`${API_BASE_URL}/api/auth/verify`, config);
         this.user = response.data.user;
         this.isAuthenticated = true;
         return true;

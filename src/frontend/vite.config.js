@@ -1,12 +1,10 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import spaFallback from 'vite-plugin-spa-fallback';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
-    spaFallback() // 添加SPA回退插件以处理Vue Router的客户端路由
+    vue()
   ],
   resolve: {
     alias: {

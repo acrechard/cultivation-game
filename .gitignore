@@ -33,6 +33,7 @@ build/
 .npm
 public/system/
 public/vendor/
+!/src/frontend/src/components/
 components/
 web/bower_components/
 web/node_modules/

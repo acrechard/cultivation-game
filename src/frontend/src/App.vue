@@ -61,9 +61,9 @@
 </template>
 
 <script>
-import { useGameStore } from './stores/game';
-import { useAuthStore } from './stores/auth';
-import GlobalStatsBar from './components/GlobalStatsBar.vue';
+import { useGameStore } from '@/stores/game';
+import { useAuthStore } from '@/stores/auth';
+import GlobalStatsBar from '@/components/GlobalStatsBar.vue';
 import { ElMessage } from 'element-plus';
 
 export default {
